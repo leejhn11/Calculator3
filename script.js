@@ -99,3 +99,4 @@ keys.addEventListener('click', (event) => {
   inputDigit(target.textContent);
   updateDisplay();
 });
+
