@@ -1,114 +1,32 @@
 <!DOCTYPE html>
-<html lang="ko">
-
-<head>
-  <meta charset="UTF-8">
-  <title>calculator</title>
-  <style>
-    * {
-      margin: 10px auto;
-      font-weight: bold;      
-    }
-
-    .all {
-      background-color: gainsboro;
-      border-spacing: 0.3em; /*칸 간격*/
-    }
-
-    tr {
-      text-align: center;
-    }
-
-    td {
-      color: black;
-      padding: 10px 15px;
-      position: relative;
-      bottom: 3px;
-    }
-
-    input {
-      height: 25px;
-      position: relative;
-      top: 5px;
-      text-align: right; /*text 입력시 오른쪽 정렬*/
-      border: none;
-    }
-
-    .four {
-      background-color: black;
-      color: white;      
-    }
-
-    .four:active {
-      box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
-      position: relative; 
-      right: 0.1em;
-    }
-
-    .reset {
-      background-color: red;
-      color: white;
-    }
-
-    .reset:active {
-      box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
-      position: relative;
-      left: 0.1em; 
-    }
-
-    .num {
-      background-color: white;
-      margin: 10px;
-    }
-
-    .num:active {
-      box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
-      position: relative; 
-      left: 0.1em;
-    }
-
-  </style>
-</head>
-
-<body>
-  <table class="all">
-
-    <td colspan="4">
-      <input type="text" id="enter">
-    </td>
-
-    <tr>
-      <td class="num" onclick="add('7')">7</td>
-      <td class="num" onclick="add('8')">8</td>
-      <td class="num" onclick="add('9')">9</td>
-      <td class="four" onclick="add('+')">+</td>
-    </tr>
-
-    <tr>
-      <td class="num" onclick="add('4')">4</td>
-      <td class="num" onclick="add('5')">5</td>
-      <td class="num" onclick="add('6')">6</td>
-      <td class="four" onclick="add('-')">-</td>
-    </tr>
-
-    <tr>
-      <td class="num" onclick="add('1')">1</td>
-      <td class="num" onclick="add('2')">2</td>
-      <td class="num" onclick="add('3')">3</td>
-      <td class="four" onclick="add('*')">*</td>
-    </tr>
-
-    <tr>
-      <td class="reset" onclick="clearDisplay()">C</td>
-      <td class="num" onclick="add('0')">0</td>
-      <td class="four" onclick="compute()">=</td>
-      <td class="four" onclick="add('/')">/</td>
-    </tr>
-
-  </table>
-
-  <script src="js/계산기.js"></script>
-
-</body>
-
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 계산기</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="calculator">
+      <input class="display" type="text" readonly>
+      <div class="buttons">
+        <button onclick="input('7')">7</button>
+        <button onclick="input('8')">8</button>
+        <button onclick="input('9')">9</button>
+        <button onclick="input('/')">÷</button>
+        <button onclick="input('4')">4</button>
+        <button onclick="input('5')">5</button>
+        <button onclick="input('6')">6</button>
+        <button onclick="input('*')">x</button>
+        <button onclick="input('1')">1</button>
+        <button onclick="input('2')">2</button>
+        <button onclick="input('3')">3</button>
+        <button onclick="input('-')">-</button>
+        <button onclick="input('0')">0</button>
+        <button onclick="input('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="input('+')">+</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
