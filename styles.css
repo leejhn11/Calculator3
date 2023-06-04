@@ -37,11 +37,6 @@ body {
   margin-bottom: 5px;
 }
 
-.output {
-  font-size: 20px;
-  color: #aaa;
-}
-
 .buttons {
   display: flex;
   flex-wrap: wrap;
