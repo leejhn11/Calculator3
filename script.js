@@ -1,49 +1,26 @@
-let inputString = '';
-let displayValue = '';
-let resultValue = '';
-let operator = '';
-
-function input(value) {
-  inputString += value;
-  displayValue += value;
-  document.querySelector('.display').value = displayValue
-  }
-
+function addOutput(num) {
+  var display = document.getElementById("display");
+  display.value = display.value + num;
+}
+ 
 function calculate() {
-  let calculation = inputString.split(operator);
-  let operand1 = parseFloat(calculation[0]);
-  let operand2 = parseFloat(calculation[1]);
-  switch(operator) {
-    case '+':
-      resultValue = operand1 + operand2;
-      break;
-    case '-':
-      resultValue = operand1 - operand2;
-      break;
-    case '*':
-      resultValue = operand1 * operand2;
-      break;
-    case '/':
-      resultValue = operand1 / operand2;
-    break;
-    default:
-      resultValue = '';
-  }
-  document.querySelector('.display').value = resultValue;
-  inputString = resultValue.toString();
-  displayValue = '';
+  var display = document.getElementById("display");
+  var result = eval(display.value);
+  var displayResult = document.getElementById("result");
+  displayResult.value = result;
 }
-
-function clearDisplay() {
-  inputString = '';
-  displayValue = '';
-  resultValue = '';
-  operator = '';
-  document.querySelector('.display').value = '';
+ 
+function reset() {
+  var display = document.getElementById("display");
+  display.value = "";
+  var displayResult = document.getElementById("result");
+  displayResult.value = "";
 }
-
-function backspace() {
-  inputString = inputString.slice(0, -1);
-  displayValue = displayValue.slice(0, -1);
-  document.querySelector('.display').value = displayValue;
+ 
+function del() {
+  var display = documnet.getElementById("display");
+  display.value = display.value.substring(0, display.value.length - 1);
 }
+ 
+ 
+ 
