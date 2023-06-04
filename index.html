@@ -7,12 +7,28 @@
 </head>
 <body>
   <div class="calculator">
-    <input type="text" class="display" disabled>
+    <input type="text" id="display" readonly>
     <div class="buttons">
-      <!-- 버튼들을 추가하세요 -->
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendInput('/')" class="operator">÷</button>
+      <button onclick="appendInput('7')">7</button>
+      <button onclick="appendInput('8')">8</button>
+      <button onclick="appendInput('9')">9</button>
+      <button onclick="appendInput('*')" class="operator">×</button>
+      <button onclick="appendInput('4')">4</button>
+      <button onclick="appendInput('5')">5</button>
+      <button onclick="appendInput('6')">6</button>
+      <button onclick="appendInput('-')" class="operator">-</button>
+      <button onclick="appendInput('1')">1</button>
+      <button onclick="appendInput('2')">2</button>
+      <button onclick="appendInput('3')">3</button>
+      <button onclick="appendInput('+')" class="operator">+</button>
+      <button onclick="appendInput('0')">0</button>
+      <button onclick="appendInput('.')">.</button>
+      <button onclick="evaluate()" class="operator equal">=</button>
     </div>
   </div>
-  
+
   <script src="script.js"></script>
 </body>
 </html>
