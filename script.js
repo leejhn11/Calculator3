@@ -16,11 +16,11 @@ function inputDigit(digit) {
   }
 }
 
-function inputDecimal() {
+function inputDecimal(dot) {
   if (calculator.waitingForSecondOperand === true) return;
 
-  if (!calculator.displayValue.includes('.')) {
-    calculator.displayValue += '.';
+  if (!calculator.displayValue.includes(dot)) {
+    calculator.displayValue += dot;
   }
 }
 
