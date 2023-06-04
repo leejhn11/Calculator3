@@ -1,101 +1,96 @@
-const calculator = {
-  displayValue: '0',
-  firstOperand: null,
-  waitingForSecondOperand: false,
-  operator: null,
-};
-
-function inputDigit(digit) {
-  const { displayValue, waitingForSecondOperand } = calculator;
-
-  if (waitingForSecondOperand === true) {
-    calculator.displayValue = digit;
-    calculator.waitingForSecondOperand = false;
-  } else {
-    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
-  }
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
 }
 
-function inputDecimal(dot) {
-  if (calculator.waitingForSecondOperand === true) return;
-
-  if (!calculator.displayValue.includes(dot)) {
-    calculator.displayValue += dot;
-  }
+.calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
-function handleOperator(nextOperator) {
-  const { firstOperand, displayValue, operator } = calculator;
-  const inputValue = parseFloat(displayValue);
-
-  if (operator && calculator.waitingForSecondOperand) {
-    calculator.operator = nextOperator;
-    return;
-  }
-
-  if (firstOperand == null && !isNaN(inputValue)) {
-    calculator.firstOperand = inputValue;
-  } else if (operator) {
-    const result = calculate(firstOperand, inputValue, operator);
-
-    calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
-    calculator.firstOperand = result;
-  }
-
-  calculator.waitingForSecondOperand = true;
-  calculator.operator = nextOperator;
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+  background-color: #eee;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-function calculate(firstOperand, secondOperand, operator) {
-  switch (operator) {
-    case '+':
-      return firstOperand + secondOperand;
-    case '-':
-      return firstOperand - secondOperand;
-    case '*':
-      return firstOperand * secondOperand;
-    case '/':
-      return firstOperand / secondOperand;
-    default:
-      return secondOperand;
-  }
+.input {
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 5px;
 }
 
-function updateDisplay() {
-  const display = document.querySelector('.input');
-  display.textContent = calculator.displayValue;
+.output {
+  font-size: 20px;
+  color: #aaa;
 }
 
-updateDisplay();
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+}
 
-const keys = document.querySelector('.buttons');
-keys.addEventListener('click', (event) => {
-  const { target } = event;
-  if (!target.matches('button')) {
-    return;
-  }
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
 
-  if (target.classList.contains('operator')) {
-    handleOperator(target.textContent);
-    updateDisplay();
-    return;
-  }
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #333;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
 
-  if (target.classList.contains('decimal')) {
-    inputDecimal(target.textContent);
-    updateDisplay();
-    return;
-  }
+.number {
+  color: #777;
+}
 
-  if (target.classList.contains('clear')) {
-    calculator.displayValue = '0';
-    calculator.firstOperand = null;
-    calculator.waitingForSecondOperand = false;
-    calculator.operator = null;
-    updateDisplay();
-    return;
-  }
+.operator {
+  color: #fff;
+  background-color: #ff9800;
+}
 
-  inputDigit(target.textContent);
-  updateDisplay();
-});
+.equal {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.zero {
+  width: 130px;
+}
+
+.button:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
