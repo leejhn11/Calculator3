@@ -2,7 +2,7 @@ const calculator = {
   displayValue: '0',
   firstOperand: null,
   waitingForSecondOperand: false,
-  operator: null,
+  operator: null
 };
 
 function inputDigit(digit) {
@@ -16,11 +16,11 @@ function inputDigit(digit) {
   }
 }
 
-function inputDecimal(dot) {
+function inputDecimal() {
   if (calculator.waitingForSecondOperand === true) return;
 
-  if (!calculator.displayValue.includes(dot)) {
-    calculator.displayValue += dot;
+  if (!calculator.displayValue.includes('.')) {
+    calculator.displayValue += '.';
   }
 }
 
