@@ -19,9 +19,8 @@ body {
 
 .screen {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
   height: 80px;
   background-color: #eee;
@@ -34,27 +33,14 @@ body {
 .input {
   font-size: 30px;
   color: #333;
-  margin-bottom: 5px;
-}
-
-.output {
-  font-size: 20px;
-  color: #aaa;
 }
 
 .buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
   padding: 10px;
   box-sizing: border-box;
-}
-
-.button-row {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 5px;
 }
 
 .button {
@@ -65,9 +51,7 @@ body {
   color: #333;
   background-color: #f7f7f7;
   border-radius: 5px;
-  width: 60px;
   height: 60px;
-  margin: 5px;
   cursor: pointer;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
@@ -87,7 +71,7 @@ body {
 }
 
 .zero {
-  width: 130px;
+  grid-column: span 2;
 }
 
 .button:active {
