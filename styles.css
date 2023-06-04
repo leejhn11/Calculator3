@@ -19,10 +19,11 @@ body {
 
 .screen {
   display: flex;
+  flex-direction: column;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
-  height: 100px;
+  height: 80px;
   background-color: #eee;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -33,14 +34,27 @@ body {
 .input {
   font-size: 30px;
   color: #333;
+  margin-bottom: 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: right;
 }
 
 .buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   box-sizing: border-box;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 .button {
@@ -53,8 +67,11 @@ body {
   border-radius: 5px;
   width: 60px;
   height: 60px;
+  margin: 5px;
   cursor: pointer;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  border: none;
+  outline: none;
 }
 
 .number {
@@ -72,7 +89,7 @@ body {
 }
 
 .zero {
-  grid-column: span 2;
+  width: 130px;
 }
 
 .button:active {
