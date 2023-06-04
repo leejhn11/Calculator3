@@ -1,0 +1,33 @@
+.calculator {
+	width: 200px;
+	margin: auto;
+	padding: 20px;
+	background-color: #EEE;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.calculator input {
+	width: 100%;
+	margin-bottom: 10px;
+	font-size: 18px;
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+	background-color: #FFF;
+	text-align: right;
+}
+
+.calculator .keys button {
+	width: 40px;
+	height: 40px;
+	margin: 2px;
+	font-size: 18px;
+	border-radius: 5px;
+	border: none;
+	background-color: #DDD;
+}
+
+.calculator .keys button:active {
+	background-color: #AAA;
+}
