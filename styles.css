@@ -35,10 +35,11 @@ body {
   font-size: 30px;
   color: #333;
   margin-bottom: 5px;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  text-align: right;
+}
+
+.output {
+  font-size: 20px;
+  color: #aaa;
 }
 
 .buttons {
@@ -70,8 +71,6 @@ body {
   margin: 5px;
   cursor: pointer;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  border: none;
-  outline: none;
 }
 
 .number {
