@@ -63,7 +63,7 @@ function calculate(firstOperand, secondOperand, operator) {
 
 function updateDisplay() {
   const display = document.querySelector('.input');
-  display.textContent = calculator.displayValue;
+  display.value = calculator.displayValue;
 }
 
 updateDisplay();
@@ -76,13 +76,13 @@ keys.addEventListener('click', (event) => {
   }
 
   if (target.classList.contains('operator')) {
-    handleOperator(target.textContent);
+    handleOperator(target.value);
     updateDisplay();
     return;
   }
 
   if (target.classList.contains('decimal')) {
-    inputDecimal(target.textContent);
+    inputDecimal(target.value);
     updateDisplay();
     return;
   }
@@ -96,7 +96,6 @@ keys.addEventListener('click', (event) => {
     return;
   }
 
-  inputDigit(target.textContent);
+  inputDigit(target.value);
   updateDisplay();
 });
-
