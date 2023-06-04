@@ -8,19 +8,18 @@ const calculator = {
 function inputDigit(digit) {
   const { displayValue, waitingForSecondOperand } = calculator;
 
-  if (waitingForSecondOperand === true) {
+  if (waitingForSecondOperand) {
     calculator.displayValue = digit;
     calculator.waitingForSecondOperand = false;
   } else {
-    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+    calculator.displayValue =
+      displayValue === '0' ? digit : displayValue + digit;
   }
 }
 
-function inputDecimal(dot) {
-  if (calculator.waitingForSecondOperand === true) return;
-
-  if (!calculator.displayValue.includes(dot)) {
-    calculator.displayValue += dot;
+function inputDecimal() {
+  if (!calculator.displayValue.includes('.')) {
+    calculator.displayValue += '.';
   }
 }
 
@@ -33,12 +32,12 @@ function handleOperator(nextOperator) {
     return;
   }
 
-  if (firstOperand == null && !isNaN(inputValue)) {
+  if (firstOperand === null && !isNaN(inputValue)) {
     calculator.firstOperand = inputValue;
   } else if (operator) {
-    const result = calculate(firstOperand, inputValue, operator);
+    const result = performCalculation[operator](firstOperand, inputValue);
 
-    calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+    calculator.displayValue = String(result);
     calculator.firstOperand = result;
   }
 
@@ -46,19 +45,23 @@ function handleOperator(nextOperator) {
   calculator.operator = nextOperator;
 }
 
-function calculate(firstOperand, secondOperand, operator) {
-  switch (operator) {
-    case '+':
-      return firstOperand + secondOperand;
-    case '-':
-      return firstOperand - secondOperand;
-    case '*':
-      return firstOperand * secondOperand;
-    case '/':
-      return firstOperand / secondOperand;
-    default:
-      return secondOperand;
-  }
+const performCalculation = {
+  '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
+
+  '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
+
+  '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
+
+  '/': (firstOperand, secondOperand) => firstOperand / secondOperand,
+
+  '=': (firstOperand, secondOperand) => secondOperand,
+};
+
+function resetCalculator() {
+  calculator.displayValue = '0';
+  calculator.firstOperand = null;
+  calculator.waitingForSecondOperand = false;
+  calculator.operator = null;
 }
 
 function updateDisplay() {
@@ -71,6 +74,7 @@ updateDisplay();
 const keys = document.querySelector('.buttons');
 keys.addEventListener('click', (event) => {
   const { target } = event;
+
   if (!target.matches('button')) {
     return;
   }
@@ -82,16 +86,13 @@ keys.addEventListener('click', (event) => {
   }
 
   if (target.classList.contains('decimal')) {
-    inputDecimal(target.textContent);
+    inputDecimal();
     updateDisplay();
     return;
   }
 
   if (target.classList.contains('clear')) {
-    calculator.displayValue = '0';
-    calculator.firstOperand = null;
-    calculator.waitingForSecondOperand = false;
-    calculator.operator = null;
+    resetCalculator();
     updateDisplay();
     return;
   }
